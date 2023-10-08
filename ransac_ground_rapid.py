@@ -97,15 +97,15 @@ def ransac_show_demo():
     # 执行需要计时的代码
     # for _ in tqdm(range(10000), desc="Processing", ncols=100):
     #     ground_points, segmented_points = ground_segmentation(data=origin_points)
-    ground_points, segmented_points = raw_ground_segmentation(data=origin_points)
+    ground_points, segmented_points = ground_segmentation(data=origin_points)
     end_time = time.time()  # 记录结束时间
 
-    point_cloud_o3d_ground = bin2open3d(ground_points)
+    point_cloud_o3d_ground = points2open3d(ground_points)
     point_cloud_o3d_ground.paint_uniform_color([0, 0, 255])
 
 
     #显示segmentd_points示地面点云
-    point_cloud_o3d_segmented = bin2open3d(segmented_points)
+    point_cloud_o3d_segmented = points2open3d(segmented_points)
     point_cloud_o3d_segmented.paint_uniform_color([255, 0, 0])
 
     o3d.visualization.draw_geometries([point_cloud_o3d_ground,point_cloud_o3d_segmented])
